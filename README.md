@@ -43,19 +43,7 @@ run via SCP(ssh):
 scp builds_you_want_besure_tobe_in_thesamedirectory user@ip:/path/you/want/
 ```
 
-Device with CURL/WGET and INTERNET
 
-```bash
-curl -Lo fastfetch https://raw.githubusercontent.com/wikiepeidia/fastfetch-precomplied-builds/main/builds/buildsyouwant
-chmod +x fastfetch
-./fastfetch
-```
-
-```bash
-wget -O fastfetch https://raw.githubusercontent.com/wikiepeidia/fastfetch-precomplied-builds/main/builds/buildsyouwant
-chmod +x fastfetch
-./fastfetch
-```
 
 Normal devices if package manager work, be sure to change APT to other package manager if you use different OS
 
@@ -65,11 +53,29 @@ sudo apt install fastfetch
 fastfetch
 ```
 
+you can use neofetch if fastfetch is too bad
+
 ## ARM32 build
 
 - file : `fastfetcharm32` will be able to run on any ARM32 LINUX
 - REQ: ARM32 linux, Accessible to shell, ability to dump this fastfetch file into the OS
 - Optional: ROOT (not neccessary) , CURL/WGET if you want to get this directly from github
+
+### download 
+
+Device with CURL/WGET and INTERNET
+
+```bash
+curl -Lo fastfetch https://raw.githubusercontent.com/wikiepeidia/fastfetch-precomplied-builds/main/builds/fastfetchARM32
+chmod +x fastfetch
+./fastfetch
+```
+
+```bash
+wget -O fastfetch https://raw.githubusercontent.com/wikiepeidia/fastfetch-precomplied-builds/main/builds/fastfetchARM32
+chmod +x fastfetch
+./fastfetch
+```
 
 ### how to RUN
 
@@ -123,6 +129,22 @@ sudo apt install fastfetch
 ```
 
 - REQ: 86/64 linux, internet, CURL,WGET.
+
+### download 
+
+Device with CURL/WGET and INTERNET
+
+```bash
+curl -Lo fastfetch https://raw.githubusercontent.com/wikiepeidia/fastfetch-precomplied-builds/main/builds/fastfetch32or64
+chmod +x fastfetch
+./fastfetch
+```
+
+```bash
+wget -O fastfetch https://raw.githubusercontent.com/wikiepeidia/fastfetch-precomplied-builds/main/builds/fastfetch32or64
+chmod +x fastfetch
+./fastfetch
+```
 
 ### how to run
 
