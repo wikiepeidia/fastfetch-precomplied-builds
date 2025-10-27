@@ -4,7 +4,8 @@ compiled build Fastfetch for some weird OS linux so you can run on your TV, ROUT
 
 ## HOW to build IF you want
 
-- REQ: LINUX (VM/WSL/REAL), INTERNET,TERMINAL
+- REQ: LINUX  (VM/WSL/REAL), INTERNET,TERMINAL
+- NOTICE: kernel 4+ is recommended as tested by me, a 20 years old UBUNTU couldnt run and get Segmentation fault
 
 Packages:
 
