@@ -224,3 +224,6 @@ make -j$(nproc)
 ![WebOS Screenshot](images/gdb.png)
 ![WebOS Screenshot](images/jslinux.png)
 ![hwhsjjs](images/2025-10-26-181536918.jpg)
+
+## Lincense
+- fastfetch is in MIT lincense <https://github.com/fastfetch-cli/fastfetch/blob/dev/LICENSE>
