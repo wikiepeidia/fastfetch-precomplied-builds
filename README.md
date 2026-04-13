@@ -19,6 +19,7 @@ sudo add-apt-repository universe
 sudo apt update
 sudo apt install gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf 
 sudo apt install gcc-multilib g++-multilib
+
 ```
 
 optional with APT-fast (replace apt➡️APT FAST)/ Inclease downlaod speed x8
