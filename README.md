@@ -6,8 +6,12 @@ compiled build Fastfetch for some weird OS linux so you can run on your TV, ROUT
 
 - REQ: LINUX  (VM/WSL/REAL), INTERNET,TERMINAL
 - NOTICE: kernel 4+ is recommended as tested by me, a 20 years old UBUNTU couldnt run and get Segmentation fault
+- to build most fastfetch you would like to go and clone the fastfetch directory first
+```bash
+git clone https://github.com/fastfetch-cli/fastfetch
+```
 
-Packages:
+- Essential Packages:
 
 ```bash
 sudo apt install build-essential clang make git 
@@ -26,19 +30,19 @@ sudo apt update
 sudo apt install apt-fast
 ```
 
-Optional: CHATGPT,CLAUDE,COPILOT for quick helps
+Optional: CHATGPT,CLAUDE,COPILOT for quick helps and assists
 
-## common device req to run fastfetch
+## common devices req to run fastfetch
 
-- LINUX
-- Accessible to shell
+- **LINUX** ~ 4x+ 
+- Accessible to **shell**
 - ability to dump this fastfetch file into the OS
-- CPU: pentium MMX(unsure), any ARM32
+- CPU: pentium MMX(unsure), any ARM (currently require NEON architecture, if there is none via `cat /proc/cpuinfo` , i am rebuilding it )
 -
 
 ## How to copy to device
 
-run via SCP(ssh):
+- run via SCP(ssh):
 
 ```bash
 scp builds_you_want_besure_tobe_in_thesamedirectory user@ip:/path/you/want/
@@ -46,7 +50,7 @@ scp builds_you_want_besure_tobe_in_thesamedirectory user@ip:/path/you/want/
 
 
 
-Normal devices if package manager work, be sure to change APT to other package manager if you use different OS
+- Normal devices if package manager work, be sure to change APT to other package manager if you use different OS
 
 ```bash
 sudo apt update
@@ -54,12 +58,12 @@ sudo apt install fastfetch
 fastfetch
 ```
 
-you can use neofetch if fastfetch is too bad
+- you can use `neofetch` if fastfetch is too bad
 
 ## ARM32 build
 
-- file : `fastfetcharm32` will be able to run on any ARM32 LINUX
-- REQ: ARM32 linux, Accessible to shell, ability to dump this fastfetch file into the OS
+- file : `fastfetcharm32` will be able to run on  ARM LINUX (32-64 with Neon architecture)
+- REQ: ARM linux, Accessible to shell, ability to dump this fastfetch file into the OS
 - Optional: ROOT (not neccessary) , CURL/WGET if you want to get this directly from github
 
 ### download 
@@ -85,8 +89,9 @@ chmod +x fastfetcharm32
 ./fastfetcharm32
 ```
 
-### Optional: HOW to build
 
+
+#### Standard ARM 
 - RUN and build
 
 ```bash
@@ -117,8 +122,39 @@ cmake .. \
 
 make 
 ```
-
 ![WebOS Screenshot](images/webos.png)
+#### ARM with stripped `neon` architecture
+
+- we have to strip neon archtiecture
+
+```bash
+cmake .. \
+  -DCMAKE_SYSTEM_NAME=Linux \
+  -DCMAKE_SYSTEM_PROCESSOR=arm \
+  -DCMAKE_C_COMPILER=arm-linux-gnueabihf-gcc \
+  -DCMAKE_CXX_COMPILER=arm-linux-gnueabihf-g++ \
+  -DCMAKE_C_FLAGS="-march=armv7-a -marm -mfpu=vfpv3-d16 -mfloat-abi=softfp" \
+  -DCMAKE_CXX_FLAGS="-march=armv7-a -marm -mfpu=vfpv3-d16 -mfloat-abi=softfp" \
+  -DCMAKE_EXE_LINKER_FLAGS="-static" \
+  -DENABLE_IMAGEMAGICK=OFF \
+  -DENABLE_RPM=OFF \
+  -DENABLE_SQLITE3=OFF \
+  -DENABLE_DBUS=OFF \
+  -DENABLE_DCONF=OFF \
+  -DENABLE_VULKAN=OFF \
+  -DENABLE_X11=OFF \
+  -DENABLE_WAYLAND=OFF \
+  -DENABLE_OPENCL=OFF \
+  -DENABLE_GLX=OFF \
+  -DENABLE_EGL=OFF \
+  -DENABLE_PULSE=OFF \
+  -DENABLE_DDCUTIL=OFF \
+  -DENABLE_DIRECTX_HEADERS=OFF \
+  -DENABLE_ELF=OFF \
+  -DENABLE_CHAFA=OFF
+
+make 
+```
 
 ## 86,64 builds
 
